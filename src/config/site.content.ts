@@ -2,76 +2,76 @@ import type { TaskKey } from '@/lib/site-config'
 
 export const siteContent = {
   navbar: {
-    tagline: 'Independent reading platform',
+    tagline: 'Profile discovery platform',
   },
   footer: {
-    tagline: 'Stories, resources, and discoverable posts',
+    tagline: 'Trusted people, brands, and communities',
   },
   hero: {
-    badge: 'Latest stories and visuals',
-    title: ['A thoughtful home for', 'stories, visuals, and discovery.'],
+    badge: 'Featured profiles',
+    title: ['A trusted space for', 'public profiles and identity discovery.'],
     description:
-      'Explore fresh articles, image-led posts, and discoverable content across the platform through a calmer and clearer browsing experience.',
+      'Explore verified creator pages, personal profiles, and brand identities through a clear profile-first experience.',
     primaryCta: {
-      label: 'Read latest stories',
-      href: '/articles',
+      label: 'Explore profiles',
+      href: '/profile',
     },
     secondaryCta: {
-      label: 'Explore visuals',
-      href: '/images',
+      label: 'Create profile',
+      href: '/register',
     },
-    searchPlaceholder: 'Search stories, visuals, listings, and more',
+    searchPlaceholder: 'Search profiles, creators, and communities',
     focusLabel: 'Focus',
-    featureCardBadge: 'latest cover rotation',
-    featureCardTitle: 'Latest posts shape the visual identity of the homepage.',
+    featureCardBadge: 'featured profile',
+    featureCardTitle: 'Profiles shape the identity of the platform.',
     featureCardDescription:
-      'Recent images and stories stay at the center of the experience without changing any core platform behavior.',
+      'Discover people and brands through profile highlights and trusted identity details.',
   },
   home: {
     metadata: {
-      title: 'Stories, visuals, and discoverable content',
+      title: 'Profiles, creators, and public identities',
       description:
-        'Explore articles, images, listings, and curated posts through a cleaner reading-first experience.',
-      openGraphTitle: 'Stories, visuals, and discoverable content',
+        'Explore verified profiles, creator pages, and public identities through a cleaner profile-first experience.',
+      openGraphTitle: 'Profiles, creators, and public identities',
       openGraphDescription:
-        'Discover articles, visual posts, and connected content through a calmer reading-first experience.',
-      keywords: ['story platform', 'article site', 'visual content', 'content discovery'],
+        'Discover trusted profile pages and public identities through a modern profile-first experience.',
+      keywords: ['profile platform', 'public profiles', 'creator pages', 'identity discovery'],
     },
     introBadge: 'About the platform',
-    introTitle: 'Built for reading, browsing, and connecting different kinds of content.',
+    introTitle: 'Built for profile discovery, trust, and public identity.',
     introParagraphs: [
-      'This site brings together article-style reading, visual browsing, and structured discovery so visitors can move naturally between different content types.',
-      'Instead of separating stories, visuals, and supporting resources into disconnected surfaces, the platform keeps them connected in one place with consistent navigation and easier exploration.',
-      'Whether someone starts with a story, an image-led post, a listing, or a resource page, they can keep discovering related content without friction.',
+      'This site brings together creators, professionals, brands, and teams in one profile-focused experience.',
+      'Instead of mixing unrelated content types, the platform keeps identity pages at the center so trust and discovery stay clear.',
+      'Whether someone starts with a person, a business, or a community page, they can explore connected profiles without friction.',
     ],
     sideBadge: 'At a glance',
     sidePoints: [
-      'Reading-first homepage with stronger emphasis on stories and imagery.',
-      'Connected sections for articles, visuals, listings, and supporting resources.',
-      'Cleaner browsing rhythm designed to make exploration feel easier.',
-      'Lightweight interactions that keep the experience fast and readable.',
+      'Profile-first homepage with trust-focused layout.',
+      'Clear sections for creators, brands, and public pages.',
+      'Cleaner browsing rhythm designed for identity discovery.',
+      'Lightweight interactions that keep exploration fast and readable.',
     ],
     primaryLink: {
-      label: 'Browse articles',
-      href: '/articles',
+      label: 'Browse profiles',
+      href: '/profile',
     },
     secondaryLink: {
-      label: 'See visuals',
-      href: '/images',
+      label: 'Create profile',
+      href: '/register',
     },
   },
   cta: {
-    badge: 'Start exploring',
-    title: 'Explore articles, visuals, and resources through one connected experience.',
+    badge: 'Join now',
+    title: 'Build your profile and get discovered by the right audience.',
     description:
-      'Move between articles, image-led posts, listings, and resources through one clearer and more connected visual system.',
+      'Create your public profile, share identity details, and grow your discovery presence in one place.',
     primaryCta: {
-      label: 'Get Started Free',
+      label: 'Create Profile',
       href: '/register',
     },
     secondaryCta: {
-      label: 'Contact Sales',
-      href: '/contact',
+      label: 'Browse Profiles',
+      href: '/profile',
     },
   },
   taskSectionHeading: 'Latest {label}',
@@ -97,7 +97,7 @@ export const taskPageMetadata: Record<Exclude<TaskKey, 'comment' | 'org' | 'soci
   },
   profile: {
     title: 'Profiles and public pages',
-    description: 'Discover public profiles, brand pages, and identity-focused posts in one place.',
+    description: 'Discover trusted public profiles, creator pages, and identity-focused content in one place.',
   },
   sbm: {
     title: 'Curated links and saved resources',
@@ -168,14 +168,14 @@ export const taskIntroCopy: Record<
   profile: {
     title: 'Profiles, identities, and public pages',
     paragraphs: [
-      'Profiles capture the identity behind a business, creator, brand, or project and help visitors understand who is behind the content they are exploring.',
-      'These pages work as trust anchors across the site and connect naturally with stories, listings, documents, and other post types.',
-      'Browse profiles to understand people and brands more clearly, then continue into related content from the same source.',
+      'Profiles capture the identity behind a creator, business, brand, or project and help visitors quickly understand who they are discovering.',
+      'These pages work as trust anchors across the platform and highlight the most important identity details in a clear format.',
+      'Browse profiles to discover people and brands more confidently and move through related profile pages with less friction.',
     ],
     links: [
-      { label: 'Open listings', href: '/listings' },
-      { label: 'Read articles', href: '/articles' },
-      { label: 'Browse images', href: '/images' },
+      { label: 'Browse all profiles', href: '/profile' },
+      { label: 'Create account', href: '/register' },
+      { label: 'Sign in', href: '/login' },
     ],
   },
   sbm: {

@@ -6,7 +6,7 @@ import { ContentImage } from "@/components/shared/content-image";
 import { TaskPostCard } from "@/components/shared/task-post-card";
 import { Button } from "@/components/ui/button";
 import { SchemaJsonLd } from "@/components/seo/schema-jsonld";
-import { buildPostUrl } from "@/lib/task-data";
+import { ArrowLeft, Globe, Sparkles } from "lucide-react";
 import { buildPostMetadata, buildTaskMetadata } from "@/lib/seo";
 import { fetchTaskPostBySlug, fetchTaskPosts } from "@/lib/task-data";
 import { SITE_CONFIG } from "@/lib/site-config";
@@ -79,7 +79,7 @@ export default async function ProfileDetailPage({ params }: { params: Promise<{ 
     post.summary ||
     "Profile details will appear here once available.";
   const descriptionHtml = formatRichHtml(description);
-  const suggestedArticles = await fetchTaskPosts("article", 6);
+  const suggestedProfiles = (await fetchTaskPosts("profile", 8)).filter((item) => item.slug !== post.slug).slice(0, 3);
   const baseUrl = SITE_CONFIG.baseUrl.replace(/\/$/, "");
   const breadcrumbData = {
     "@context": "https://schema.org",
@@ -107,25 +107,38 @@ export default async function ProfileDetailPage({ params }: { params: Promise<{ 
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[linear-gradient(180deg,#d6dfeb_0%,#eff4fa_100%)]">
       <NavbarShell />
       <main className="mx-auto w-full max-w-6xl px-4 pb-16 pt-10 sm:px-6 lg:px-8">
         <SchemaJsonLd data={breadcrumbData} />
-        <section className="rounded-3xl border border-border/60 bg-white/90 p-8 shadow-sm md:p-12">
+        <section className="mb-8 overflow-hidden rounded-[2rem] border border-white/55 bg-[linear-gradient(130deg,#0d366f_6%,#0e75c7_48%,#16b8dc_100%)] p-7 text-white shadow-[0_22px_70px_rgba(13,32,62,0.34)] sm:p-8">
+          <Link href="/profile" className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/10 px-4 py-2 text-sm font-medium hover:bg-white/20">
+            <ArrowLeft className="h-4 w-4" />
+            Back to Profiles
+          </Link>
+          <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em]">
+            <Sparkles className="h-4 w-4" />
+            Profile detail
+          </p>
+          <h1 className="mt-4 text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">{brandName}</h1>
+          {domain ? <p className="mt-2 inline-flex items-center gap-2 text-sm text-slate-100"><Globe className="h-4 w-4" />{domain}</p> : null}
+        </section>
+
+        <section className="rounded-3xl border border-slate-200 bg-white/95 p-8 shadow-[0_14px_40px_rgba(15,23,42,0.08)] md:p-12">
           <div className="grid gap-8 md:grid-cols-[200px_1fr] md:items-start">
             <div className="flex justify-center md:justify-start">
-              <div className="relative h-36 w-36 overflow-hidden rounded-full border border-border/70 bg-muted">
+              <div className="relative h-36 w-36 overflow-hidden rounded-full border border-slate-200 bg-slate-100">
                 {logoUrl ? (
                   <ContentImage src={logoUrl} alt={post.title} fill className="object-cover" sizes="144px" intrinsicWidth={144} intrinsicHeight={144} />
                 ) : (
-                  <div className="flex h-full w-full items-center justify-center text-3xl font-semibold text-muted-foreground">
+                  <div className="flex h-full w-full items-center justify-center text-3xl font-semibold text-slate-500">
                     {post.title.slice(0, 1).toUpperCase()}
                   </div>
                 )}
               </div>
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-foreground sm:text-4xl">{brandName}</h1>
+              <h2 className="text-3xl font-bold text-foreground sm:text-4xl">{brandName}</h2>
               {domain ? (
                 <p className="mt-1 text-sm font-medium text-muted-foreground">{domain}</p>
               ) : null}
@@ -135,7 +148,7 @@ export default async function ProfileDetailPage({ params }: { params: Promise<{ 
               />
               {website ? (
                 <div className="mt-8">
-                  <Button asChild size="lg" className="px-7 text-base">
+                  <Button asChild size="lg" className="rounded-full bg-[#0f5fbe] px-7 text-base hover:bg-[#0d4f9f]">
                     <Link href={website} target="_blank" rel="noopener noreferrer">
                       Visit Official Site
                     </Link>
@@ -146,34 +159,35 @@ export default async function ProfileDetailPage({ params }: { params: Promise<{ 
           </div>
         </section>
 
-        {suggestedArticles.length ? (
+        {suggestedProfiles.length ? (
           <section className="mt-12">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-semibold text-foreground">Suggested articles</h2>
-              <Link href="/articles" className="text-sm font-medium text-primary hover:underline">
+              <h2 className="text-xl font-semibold text-foreground">More profiles</h2>
+              <Link href="/profile" className="text-sm font-medium text-primary hover:underline">
                 View all
               </Link>
             </div>
             <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {suggestedArticles.slice(0, 3).map((article) => (
+              {suggestedProfiles.map((profile) => (
                 <TaskPostCard
-                  key={article.id}
-                  post={article}
-                  href={buildPostUrl("article", article.slug)}
+                  key={profile.id}
+                  post={profile}
+                  href={`/profile/${profile.slug}`}
+                  taskKey="profile"
                   compact
                 />
               ))}
             </div>
-            <nav className="mt-6 rounded-2xl border border-border bg-card/60 p-4">
+            <nav className="mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_8px_24px_rgba(15,23,42,0.06)]">
               <p className="text-sm font-semibold text-foreground">Related links</p>
               <ul className="mt-2 space-y-2 text-sm">
-                {suggestedArticles.slice(0, 3).map((article) => (
-                  <li key={`related-${article.id}`}>
+                {suggestedProfiles.map((profile) => (
+                  <li key={`related-${profile.id}`}>
                     <Link
-                      href={buildPostUrl("article", article.slug)}
+                      href={`/profile/${profile.slug}`}
                       className="text-primary underline-offset-4 hover:underline"
                     >
-                      {article.title}
+                      {profile.title}
                     </Link>
                   </li>
                 ))}

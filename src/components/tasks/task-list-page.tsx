@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, Building2, FileText, Image as ImageIcon, LayoutGrid, Tag, User } from 'lucide-react'
+import { ArrowRight, Building2, FileText, Image as ImageIcon, LayoutGrid, ShieldCheck, Sparkles, Tag, User } from 'lucide-react'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
 import { TaskListClient } from '@/components/tasks/task-list-client'
@@ -31,8 +31,8 @@ const variantShells = {
   'article-journal': 'bg-[linear-gradient(180deg,#fffdf9_0%,#f7f1ea_100%)]',
   'image-masonry': 'bg-[linear-gradient(180deg,#09101d_0%,#111c2f_100%)] text-white',
   'image-portfolio': 'bg-[linear-gradient(180deg,#07111f_0%,#13203a_100%)] text-white',
-  'profile-creator': 'bg-[linear-gradient(180deg,#0a1120_0%,#101c34_100%)] text-white',
-  'profile-business': 'bg-[linear-gradient(180deg,#f6fbff_0%,#ffffff_100%)]',
+  'profile-creator': 'bg-[linear-gradient(180deg,#d6dfeb_0%,#eff4fa_100%)]',
+  'profile-business': 'bg-[linear-gradient(180deg,#d6dfeb_0%,#eff4fa_100%)]',
   'classified-bulletin': 'bg-[linear-gradient(180deg,#edf3e4_0%,#ffffff_100%)]',
   'classified-market': 'bg-[linear-gradient(180deg,#f4f6ef_0%,#ffffff_100%)]',
   'sbm-curation': 'bg-[linear-gradient(180deg,#fff7ee_0%,#ffffff_100%)]',
@@ -60,7 +60,7 @@ export async function TaskListPage({ task, category }: { task: TaskKey; category
   const shellClass = variantShells[layoutKey as keyof typeof variantShells] || 'bg-background'
   const Icon = taskIcons[task] || LayoutGrid
 
-  const isDark = ['image-masonry', 'image-portfolio', 'profile-creator'].includes(layoutKey)
+  const isDark = ['image-masonry', 'image-portfolio'].includes(layoutKey)
   const ui = isDark
     ? {
         muted: 'text-slate-300',
@@ -187,16 +187,56 @@ export async function TaskListPage({ task, category }: { task: TaskKey; category
         ) : null}
 
         {layoutKey === 'profile-creator' || layoutKey === 'profile-business' ? (
-          <section className={`mb-12 rounded-[2.2rem] p-8 shadow-[0_24px_70px_rgba(15,23,42,0.1)] ${ui.panel}`}>
-            <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-              <div className={`min-h-[240px] rounded-[2rem] ${ui.soft}`} />
-              <div>
-                <p className={`text-xs uppercase tracking-[0.3em] ${ui.muted}`}>{taskConfig?.label || task}</p>
-                <h1 className="mt-3 text-4xl font-semibold tracking-[-0.05em] text-foreground">Profiles with stronger identity, trust, and reputation cues.</h1>
-                <p className={`mt-5 max-w-2xl text-sm leading-8 ${ui.muted}`}>This layout prioritizes the person or business surface first, then lets the feed continue below without borrowing the same visual logic used by articles or listings.</p>
+          <>
+            <section className="mb-8 overflow-hidden rounded-[2rem] border border-white/55 bg-[linear-gradient(130deg,#0d366f_6%,#0e75c7_48%,#16b8dc_100%)] p-8 text-white shadow-[0_22px_70px_rgba(13,32,62,0.34)]">
+              <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+                <div>
+                  <p className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em]">
+                    <Sparkles className="h-4 w-4" />
+                    {taskConfig?.label || task}
+                  </p>
+                  <h1 className="mt-5 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
+                    Discover trusted people, brands, and communities.
+                  </h1>
+                  <p className="mt-5 max-w-2xl text-sm leading-8 text-slate-100 sm:text-base">
+                    Explore profile pages with clear identity details, trust cues, and a cleaner discovery flow.
+                  </p>
+                  <div className="mt-7 flex flex-wrap gap-3">
+                    <Link href="/register" className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#0c3271] transition hover:bg-slate-100">
+                      Create Your Profile
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                    <Link href="/contact" className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-white/20">
+                      Contact Team
+                    </Link>
+                  </div>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+                  <div className="rounded-xl border border-white/30 bg-white/10 px-4 py-3 text-sm">
+                    <ShieldCheck className="mb-1 h-4 w-4" />
+                    Verified identity-first surfaces
+                  </div>
+                  <div className="rounded-xl border border-white/30 bg-white/10 px-4 py-3 text-sm">
+                    <User className="mb-1 h-4 w-4" />
+                    {posts.length}+ discoverable profile cards
+                  </div>
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
+
+            <section className="mb-12 grid gap-4 sm:grid-cols-3">
+              {[
+                ['15k+', 'Profiles visited this month'],
+                ['98%', 'Profiles include trust details'],
+                ['24/7', 'Always-on profile discovery'],
+              ].map(([value, label]) => (
+                <article key={label} className="rounded-[1.4rem] border border-slate-200 bg-white p-5 shadow-[0_10px_35px_rgba(15,23,42,0.08)]">
+                  <p className="text-2xl font-semibold text-[#0f5fbe]">{value}</p>
+                  <p className="mt-1 text-sm text-slate-600">{label}</p>
+                </article>
+              ))}
+            </section>
+          </>
         ) : null}
 
         {layoutKey === 'classified-bulletin' || layoutKey === 'classified-market' ? (

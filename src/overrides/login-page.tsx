@@ -45,21 +45,16 @@ export function LoginPageOverride() {
               Welcome back
             </p>
             <h1 className="mt-5 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
-              Sign in to your profile workspace
+              Welcome back to Singpre
             </h1>
             <p className="mt-5 max-w-md text-sm leading-8 text-slate-100">
-              Manage your public profile, identity details, highlights, and discovery presence from one place.
+              Access your social profile platform and manage your public identity, creator pages, and community discovery.
             </p>
-            <div className="mt-8 space-y-3 text-sm text-slate-100">
-              <p className="rounded-2xl border border-white/30 bg-white/10 px-4 py-3">Profile-first dashboard experience</p>
-              <p className="rounded-2xl border border-white/30 bg-white/10 px-4 py-3">Secure local session persistence</p>
-              <p className="rounded-2xl border border-white/30 bg-white/10 px-4 py-3">Fast access to your profile pages</p>
-            </div>
-          </div>
+                      </div>
 
           <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_22px_60px_rgba(15,23,42,0.1)]">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Login</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em] text-slate-950">{SITE_CONFIG.name} account</h2>
+            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em] text-slate-950">Sign in to your account</h2>
 
             <form onSubmit={handleSubmit} className="mt-7 grid gap-4">
               <label className="grid gap-2 text-sm font-medium text-slate-700">

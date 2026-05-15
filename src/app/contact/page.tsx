@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { Clock3, Mail, MapPin, MessageSquareText, Phone, Sparkles } from 'lucide-react'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
@@ -72,15 +71,15 @@ export default function ContactPage() {
           <div className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-[0_14px_40px_rgba(15,23,42,0.1)]">
             <h2 className="text-2xl font-semibold tracking-[-0.02em]">Send a message</h2>
             <p className="mt-2 text-sm text-slate-600">Tell us what you need and we will route your request to the right team.</p>
-            <ContactLeadForm />
-            <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600">
-              <p className="font-semibold text-slate-800">Direct contact</p>
-              <p className="mt-1 inline-flex items-center gap-2"><Mail className="h-4 w-4" /> support@{SITE_CONFIG.domain}</p>
-              <p className="mt-1 inline-flex items-center gap-2"><Phone className="h-4 w-4" /> +1 (555) 410-2042</p>
-              <p className="mt-3">
-                Need profile updates now? <Link href="/profile" className="font-semibold text-[#0f5fbe] hover:underline">Browse profiles</Link>
-              </p>
-            </div>
+            <form className="mt-6 grid gap-4">
+              <input className="h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm text-slate-900 outline-none focus:border-[#1572c6] focus:bg-white" placeholder="Your name" />
+              <input className="h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm text-slate-900 outline-none focus:border-[#1572c6] focus:bg-white" placeholder="Email address" />
+              <input className="h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm text-slate-900 outline-none focus:border-[#1572c6] focus:bg-white" placeholder="What do you need help with?" />
+              <textarea className="min-h-[180px] rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none focus:border-[#1572c6] focus:bg-white" placeholder="Share the full context so we can respond with the right next step." />
+              <button type="submit" className="inline-flex h-12 items-center justify-center rounded-full bg-[#0f5fbe] px-6 text-sm font-semibold text-white transition hover:bg-[#0d4f9f]">
+                Send message
+              </button>
+            </form>
           </div>
         </section>
       </main>

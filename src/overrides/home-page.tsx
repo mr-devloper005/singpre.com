@@ -1,112 +1,105 @@
 import Link from 'next/link'
-import { ArrowRight, Play, ShieldCheck, UserRound } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
-import { ContentImage } from '@/components/shared/content-image'
-import { TaskPostCard } from '@/components/shared/task-post-card'
-import { SITE_CONFIG } from '@/lib/site-config'
-import { fetchTaskPosts } from '@/lib/task-data'
 
 export const HOME_PAGE_OVERRIDE_ENABLED = true
 
 export async function HomePageOverride() {
-  const profilePosts = await fetchTaskPosts('profile', 8, { allowMockFallback: true, fresh: true })
-  const featuredProfiles = profilePosts.slice(0, 6)
-  const highlight = featuredProfiles[0]
+  const favoriteColors = [
+    '#f08907', '#f9e8e1', '#1d0e0c', '#a31911', '#cfb53b', '#839798', '#5a6871',
+    '#6a6766', '#9e1b32', '#310650', '#000250', '#cacaca', '#ccac00', '#000000',
+    '#ffffff', '#c9d3c5', '#8d9197', '#484f59', '#204e4b', '#22368b', '#168493',
+    '#a54c2b', '#bbd8ea', '#070135', '#3768a4', '#fec56c', '#5287c5', '#85b3a4',
+    '#cad338', '#fff4f3', '#353f4c', '#3d4d71', '#261f38', '#bc5727', '#8aae88',
+    '#97643a', '#fffbde', '#999ea1', '#efefef', '#285ffb', '#17c6e5', '#2472c6',
+  ]
 
   return (
-    <div className="min-h-screen bg-[#d6dfeb] text-slate-950">
+    <div className="min-h-screen bg-[#efefef] text-[#1f2630]">
       <NavbarShell />
-      <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-10">
-        <section className="relative overflow-hidden rounded-[2rem] border border-white/40 bg-[linear-gradient(140deg,#0a2f67_5%,#0064aa_45%,#0eb9d8_100%)] px-5 pb-8 pt-5 shadow-[0_26px_90px_rgba(5,24,54,0.42)] sm:px-8 sm:pb-12 sm:pt-6">
-          <div className="pointer-events-none absolute inset-0 opacity-30">
-            <ContentImage src="/placeholder.jpg" alt="Hero background" fill className="object-cover" />
-          </div>
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(7,15,33,0.22)_0%,rgba(7,15,33,0.8)_72%,rgba(7,15,33,0.96)_100%)]" />
-
-          <div className="relative z-10 grid gap-8 pt-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:pt-16">
-            <div>
-              <p className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/90">
-                <ShieldCheck className="h-4 w-4" />
-                Trusted profile network
+      <main className="mx-auto w-full max-w-[1180px] px-4 py-8 sm:px-6 lg:px-8">
+        <div className="grid gap-8 lg:grid-cols-[220px_1fr]">
+          <aside className="hidden lg:block">
+            <div className="sticky top-24 rounded-2xl border border-[#dddddd] bg-[#f7f7f7] p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#5f6773]">Palette Guide</p>
+              <h3 className="mt-3 text-2xl font-semibold tracking-[-0.02em] text-[#222a33]">Color Hub</h3>
+              <p className="mt-3 text-sm leading-7 text-[#5c6674]">
+                Explore top-used hex tones and visual combinations for profile pages and brand surfaces.
               </p>
-              <h1 className="mt-5 max-w-3xl text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl">
-                Discover People, Brands, and Public Identities
+              <div className="mt-5 rounded-xl border border-[#e0e0e0] bg-white p-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6e7681]">Quick Tip</p>
+                <p className="mt-2 text-sm leading-6 text-[#4d5868]">
+                  Keep contrast strong and use neutral backgrounds for long reading blocks.
+                </p>
+              </div>
+            </div>
+          </aside>
+
+          <div>
+            <section className="rounded-2xl border border-[#dddddd] bg-[#efefef] p-6 sm:p-8">
+              <h1 className="mt-5 text-4xl font-semibold tracking-[-0.03em] text-[#222a33] sm:text-5xl">
+                Color Hex Color Codes
               </h1>
-              <p className="mt-4 max-w-2xl text-sm leading-8 text-slate-100 sm:text-base">
-                {SITE_CONFIG.name} is built for profile discovery. Explore verified creators, businesses, and communities through one clean experience.
+              <p className="mt-4 max-w-4xl text-lg leading-9 text-[#2f3a46]">
+                Color-hex gives information about colors including color models (RGB, HSL, HSV and CMYK), triadic
+                colors, monochromatic colors and analogous colors calculated in color page.
               </p>
-              <div className="mt-7 flex flex-wrap gap-3">
-                <Link href="/profile" className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#0c3271] transition hover:bg-slate-100">
-                  Explore Profiles
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-                <Link href="/register" className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/20">
-                  Create Your Profile
-                </Link>
+              <p className="mt-4 max-w-4xl text-lg leading-9 text-[#2f3a46]">
+                Simply type the 6 digit color code in the box above and hit enter to generate readable CSS values and
+                matching color sets.
+              </p>
+            </section>
+
+            <section className="mt-8 rounded-2xl border border-[#dddddd] bg-[#efefef] p-6 sm:p-8">
+              <h2 className="text-4xl font-semibold tracking-[-0.03em] text-[#222a33]">Understanding Hex Color Codes</h2>
+              <p className="mt-5 text-lg leading-9 text-[#2f3a46]">
+                <strong>Hex color codes</strong> are a fundamental part of digital design, web development, and graphic
+                creation. They provide a standardized way to represent colors using a six-character code.
+              </p>
+              <h3 className="mt-7 text-3xl font-semibold tracking-[-0.02em] text-[#222a33]">What Are Hex Color Codes?</h3>
+              <p className="mt-4 text-lg leading-9 text-[#2f3a46]">
+                A <strong>hex color code</strong> is a six-digit combination of numbers and letters, preceded by a #
+                symbol. Each pair of characters in the code represents the intensity of red, green, and blue in a
+                particular color.
+              </p>
+              <div className="mt-5 rounded-xl border border-[#cccccc] bg-[#f5f5f5] px-5 py-4 font-mono text-base text-[#1f2630]">
+                #RRGGBB
               </div>
-            </div>
+              <ul className="mt-5 list-disc space-y-2 pl-6 text-lg leading-9 text-[#2f3a46]">
+                <li>RR represents the red component (00 to FF).</li>
+                <li>GG represents the green component (00 to FF).</li>
+                <li>BB represents the blue component (00 to FF).</li>
+              </ul>
+              <h3 className="mt-7 text-3xl font-semibold tracking-[-0.02em] text-[#222a33]">Why Use Hex Codes?</h3>
+              <ul className="mt-4 list-disc space-y-2 pl-6 text-lg leading-9 text-[#2f3a46]">
+                <li>Precision: Ensures exact color representation.</li>
+                <li>Web Compatibility: Used in HTML and CSS for styling elements.</li>
+                <li>Compactness: Short, easy-to-read format for development.</li>
+              </ul>
+            </section>
 
-            <div className="relative">
-              <div className="rounded-[1.4rem] border border-white/40 bg-white p-3 shadow-[0_18px_40px_rgba(0,0,0,0.28)]">
-                <div className="relative h-44 overflow-hidden rounded-[1rem]">
-                  <ContentImage src={highlight ? '/placeholder.jpg' : '/placeholder.svg?height=300&width=500'} alt="Profile highlight" fill className="object-cover" />
-                  <button type="button" className="absolute left-1/2 top-1/2 inline-flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#0c3271] shadow-lg">
-                    <Play className="h-5 w-5 fill-current" />
-                  </button>
-                </div>
-                <p className="mt-2 text-sm text-slate-700">Featured profile spotlight</p>
+            <section className="mt-8 rounded-2xl border border-[#dddddd] bg-[#efefef] p-6 sm:p-8">
+              <div className="flex items-end justify-between gap-4">
+                <h2 className="text-3xl font-semibold tracking-[-0.03em] text-[#222a33]">Users Latest Favorite Colors</h2>
               </div>
-            </div>
-          </div>
-
-          <p className="pointer-events-none absolute left-8 top-24 z-0 text-[80px] font-semibold tracking-[-0.04em] text-white/20 sm:text-[120px] lg:text-[150px]">
-            {SITE_CONFIG.name.toUpperCase()}
-          </p>
-        </section>
-
-        <section className="rounded-b-[2rem] bg-white px-5 py-10 shadow-[0_22px_55px_rgba(15,23,42,0.08)] sm:px-8">
-          <div className="mx-auto max-w-4xl text-center">
-            <p className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">
-              <UserRound className="h-3.5 w-3.5" />
-              Who We Are
-            </p>
-            <h2 className="mt-5 text-3xl font-semibold tracking-[-0.03em] text-slate-950 sm:text-4xl">
-              A profile-first platform built for meaningful identity discovery.
-            </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-sm leading-8 text-slate-600 sm:text-base">
-              We help visitors discover authentic public profiles across creators, teams, brands, and professionals with a clearer and more trusted browsing experience.
-            </p>
-          </div>
-
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            {[
-              ['5,000+', 'Active profile pages'],
-              ['120+', 'Verified communities'],
-              ['24/7', 'Live profile discovery'],
-            ].map(([value, label]) => (
-              <div key={label} className="rounded-[1.2rem] border border-slate-200 bg-slate-50 px-5 py-6">
-                <p className="text-2xl font-semibold text-[#115ab3]">{value}</p>
-                <p className="mt-1 text-sm text-slate-600">{label}</p>
+              <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7">
+                {favoriteColors.map((color) => (
+                  <div key={color} className="group">
+                    <div
+                      className="h-28 rounded-md border border-black/10 transition-transform duration-200 group-hover:scale-[1.02]"
+                      style={{ backgroundColor: color }}
+                    />
+                    <p className="mt-2 text-center font-mono text-[28px] leading-none tracking-tight text-[#1f2630] sm:text-sm">
+                      {color}
+                    </p>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </section>
+            </section>
 
-        <section className="mt-10">
-          <div className="mb-6 flex items-end justify-between gap-3">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Profile feed</p>
-              <h3 className="mt-2 text-3xl font-semibold tracking-[-0.03em] text-slate-950">Top Profiles</h3>
-            </div>
-            <Link href="/profile" className="text-sm font-semibold text-[#0f5fbe] hover:underline">View all</Link>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredProfiles.map((post) => (
-              <TaskPostCard key={post.id} post={post} href={`/profile/${post.slug}`} taskKey="profile" />
-            ))}
-          </div>
-        </section>
+        </div>
       </main>
       <Footer />
     </div>

@@ -13,7 +13,9 @@ export function FooterOverride() {
         </div>
         <div className="flex flex-wrap gap-3 text-sm font-medium">
           <Link href="/" className="rounded-full border border-slate-200 px-4 py-2 hover:bg-slate-50">Home</Link>
-          <Link href="/profile" className="rounded-full border border-slate-200 px-4 py-2 hover:bg-slate-50">Profiles</Link>
+          <Link href="/about" className="rounded-full border border-slate-200 px-4 py-2 hover:bg-slate-50">About Us</Link>
+          <Link href="/contact" className="rounded-full border border-slate-200 px-4 py-2 hover:bg-slate-50">Contact Us</Link>
+          <Link href="/help" className="rounded-full border border-slate-200 px-4 py-2 hover:bg-slate-50">Help</Link>
           <Link href="/login" className="rounded-full border border-slate-200 px-4 py-2 hover:bg-slate-50">Login</Link>
           <Link href="/register" className="rounded-full border border-slate-200 px-4 py-2 hover:bg-slate-50">Register</Link>
         </div>

@@ -1,9 +1,7 @@
 import Link from "next/link";
-import { ArrowRight, Compass, ShieldCheck, Sparkles, Users } from "lucide-react";
+import { Compass, ShieldCheck, Sparkles, Users } from "lucide-react";
 import { NavbarShell } from "@/components/shared/navbar-shell";
 import { Footer } from "@/components/shared/footer";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { mockTeamMembers } from "@/data/mock-data";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 const pillars = [
@@ -41,10 +39,6 @@ export default function AboutPage() {
             {SITE_CONFIG.name} helps people discover creators, professionals, teams, and brands through identity-focused pages that prioritize trust and clarity.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/profile" className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#0c3271] transition hover:bg-slate-100">
-              Explore Profiles
-              <ArrowRight className="h-4 w-4" />
-            </Link>
             <Link href="/contact" className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-white/20">
               Contact Us
             </Link>
@@ -59,30 +53,6 @@ export default function AboutPage() {
               <p className="mt-3 text-sm leading-7 text-slate-600">{item.body}</p>
             </article>
           ))}
-        </section>
-
-        <section className="mt-8 rounded-[1.6rem] border border-slate-200 bg-white p-6 shadow-[0_14px_40px_rgba(15,23,42,0.08)] sm:p-8">
-          <div className="flex items-center justify-between gap-4">
-            <h2 className="text-2xl font-semibold tracking-[-0.03em]">People Behind The Platform</h2>
-          </div>
-          <div className="mt-6 grid gap-5 md:grid-cols-3">
-            {mockTeamMembers.map((member) => (
-              <article key={member.id} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                <div className="flex items-center gap-3">
-                  <Avatar className="h-12 w-12 border border-slate-200">
-                    <AvatarImage src={member.avatar} alt={member.name} />
-                    <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <p className="text-sm font-semibold text-slate-900">{member.name}</p>
-                    <p className="text-xs text-slate-500">{member.role}</p>
-                  </div>
-                </div>
-                <p className="mt-3 text-sm leading-6 text-slate-600">{member.bio}</p>
-                <p className="mt-2 text-xs text-slate-500">{member.location}</p>
-              </article>
-            ))}
-          </div>
         </section>
       </main>
       <Footer />

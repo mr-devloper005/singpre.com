@@ -41,10 +41,10 @@ export function RegisterPageOverride() {
         <section className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_22px_60px_rgba(15,23,42,0.1)]">
           <p className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-slate-600">
             <UserRound className="h-4 w-4" />
-            Create profile account
+            Join Singpre
           </p>
-          <h1 className="mt-5 text-4xl font-semibold tracking-[-0.04em]">Join the profile network</h1>
-          <p className="mt-3 text-sm leading-7 text-slate-600">Set up your public identity and start getting discovered.</p>
+          <h1 className="mt-5 text-4xl font-semibold tracking-[-0.04em]">Create your social profile</h1>
+          <p className="mt-3 text-sm leading-7 text-slate-600">Build your public identity, share creator pages, and join the community discovery platform.</p>
 
           <form onSubmit={handleSubmit} className="mt-7 grid gap-4">
             <input value={name} onChange={(event) => setName(event.target.value)} className="h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm outline-none focus:border-[#1572c6] focus:bg-white" placeholder="Full name" />
